@@ -17,7 +17,7 @@
 <style>
 @font-face{font-family:Heebo;font-style:normal;font-weight:400 800;font-display:swap;src:url(fonts/heebo-hebrew.woff2) format('woff2');unicode-range:U+0307-0308,U+0590-05FF,U+200C-2010,U+20AA,U+25CC,U+FB1D-FB4F}
 @font-face{font-family:Heebo;font-style:normal;font-weight:400 800;font-display:swap;src:url(fonts/heebo-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
-:root{--cream:#fffaf1;--paper:#ffffff;--sage:#e3eadf;--green:#2f4f33;--green-2:#567057;--ink:#1d2a1f;--muted:#5d6b5f;--line:#e4e0d6;--wa:#1faa59;--radius:14px}
+:root{--cream:#fffaf1;--paper:#ffffff;--sage:#e3eadf;--green:#2f4f33;--green-2:#567057;--ink:#1d2a1f;--muted:#5d6b5f;--line:#e4e0d6;--wa:#0f7a43;--radius:14px}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--cream);color:var(--ink);font:400 17px/1.65 Heebo,system-ui,"Segoe UI",Arial,sans-serif;-webkit-font-smoothing:antialiased}
@@ -29,7 +29,7 @@ h1{font-size:clamp(2rem,4.6vw,3.2rem);letter-spacing:-.01em}
 h2{font-size:clamp(1.6rem,3.2vw,2.3rem)}
 h3{font-size:1.15rem}
 p{margin:0}
-.eyebrow{display:inline-block;font-weight:700;font-size:.9rem;color:var(--green-2);background:var(--sage);padding:4px 12px;border-radius:99px;margin-bottom:14px}
+.eyebrow{display:inline-block;font-weight:700;font-size:.9rem;color:var(--green);background:var(--sage);padding:4px 12px;border-radius:99px;margin-bottom:14px}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;border-radius:12px;font:700 1.05rem/1 Heebo,system-ui,sans-serif;text-decoration:none;border:2px solid transparent;cursor:pointer;transition:transform .15s ease,box-shadow .15s ease}
 .btn:hover{transform:translateY(-1px);box-shadow:0 8px 20px rgba(29,42,31,.15)}
 .btn svg{width:22px;height:22px;flex:none}
@@ -42,7 +42,8 @@ section{padding:72px 0}
 /* header */
 .hdr{position:sticky;top:0;z-index:20;background:var(--cream);border-bottom:1px solid var(--line)}
 .hdr .wrap{display:flex;align-items:center;justify-content:space-between;height:68px;gap:16px}
-.hdr .logo img{height:40px;width:auto}
+.hdr .logo{flex-shrink:1;min-width:0}
+.hdr .logo img{height:40px;width:auto;max-width:100%;object-fit:contain;object-position:right center}
 .hdr .btn{min-height:44px;padding:0 18px;font-size:.98rem}
 /* hero */
 .hero{padding:48px 0 64px}
@@ -61,9 +62,9 @@ section{padding:72px 0}
 .table th,.table td{padding:14px 16px;text-align:right;vertical-align:top;border-bottom:1px solid var(--line)}
 .table tr:last-child td{border-bottom:0}
 .table thead th{background:var(--green);color:#fff;font-weight:700}
-.table td:first-child{font-weight:700;color:var(--green);width:22%}
-.table td:nth-child(2){background:#f3f7f1}
-.table td:nth-child(3){color:var(--muted)}
+.table tbody th{font-weight:700;color:var(--green);width:22%;background:var(--paper)}
+.table td:nth-of-type(1){background:#f3f7f1}
+.table td:nth-of-type(2){color:var(--muted)}
 .tick{color:var(--wa);font-weight:800;margin-left:6px}
 /* products */
 .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
@@ -137,7 +138,7 @@ footer a{color:#fff}
   <div class="wrap">
     <a class="logo" href="#top" aria-label="FORMTECH, לראש העמוד"><img src="img/logo-600.webp" width="600" height="87" alt="FORMTECH לוחות בנייה ירוקה"></a>
     <div style="display:flex;gap:10px">
-      <a class="btn btn-call" data-call href="tel:+972722327444" aria-label="התקשרו אלינו"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg><span data-call-text>072-2327444</span></a>
+      <a class="btn btn-call" data-call href="tel:+972722327444"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg><span data-call-text>072-2327444</span></a>
       <a class="btn btn-wa" data-wa href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg>וואטסאפ</a>
     </div>
   </div>
@@ -172,17 +173,17 @@ footer a{color:#fff}
       <p>אותו מחיר לוח, אבל הרבה יותר שימושים, פחות תחזוקה ותוצאה נקייה יותר.</p>
     </div>
     <table class="table">
-      <thead><tr><th scope="col"></th><th scope="col">לוח FORMTECH מפוליפרופילן</th><th scope="col">טפסנות עץ</th></tr></thead>
+      <thead><tr><th scope="col"><span class="hp">תכונה</span></th><th scope="col">לוח FORMTECH מפוליפרופילן</th><th scope="col">טפסנות עץ</th></tr></thead>
       <tbody>
-        <tr><td>שימוש חוזר</td><td><span class="tick">✓</span>עד 100 פעמים</td><td>כ-10–20 פעמים בלבד</td></tr>
-        <tr><td>עמידות למים</td><td><span class="tick">✓</span>עמיד לחלוטין, אינו מתנפח</td><td>סופג מים ומתעוות</td></tr>
-        <tr><td>משקל</td><td><span class="tick">✓</span>קל יותר לנשיאה ולעבודה באתר</td><td>כבד יותר</td></tr>
-        <tr><td>תחזוקה</td><td><span class="tick">✓</span>כמעט ואינה נדרשת</td><td>דורש טיפול ושימור</td></tr>
-        <tr><td>ניקוי</td><td><span class="tick">✓</span>שטיפה בלחץ מים בלבד</td><td>ניקוי מורכב יותר</td></tr>
-        <tr><td>בטון חשוף</td><td><span class="tick">✓</span>משטח חלק ואחיד</td><td>תוצאה משתנה</td></tr>
-        <tr><td>עיבוד</td><td><span class="tick">✓</span>חיתוך, קידוח וצורות מעוגלות</td><td>מגבלות בעבודה</td></tr>
-        <tr><td>מזג אוויר</td><td><span class="tick">✓</span>אחסון בחוץ ללא כיסוי בניילון</td><td>נשחק מהר בשמש ובגשם</td></tr>
-        <tr><td>סביבה</td><td><span class="tick">✓</span>ניתן למחזור בסוף השימוש</td><td>כריתת עצים מתמשכת</td></tr>
+        <tr><th scope="row">שימוש חוזר</th><td><span class="tick">✓</span>עד 100 פעמים</td><td>כ-10–20 פעמים בלבד</td></tr>
+        <tr><th scope="row">עמידות למים</th><td><span class="tick">✓</span>עמיד לחלוטין, אינו מתנפח</td><td>סופג מים ומתעוות</td></tr>
+        <tr><th scope="row">משקל</th><td><span class="tick">✓</span>קל יותר לנשיאה ולעבודה באתר</td><td>כבד יותר</td></tr>
+        <tr><th scope="row">תחזוקה</th><td><span class="tick">✓</span>כמעט ואינה נדרשת</td><td>דורש טיפול ושימור</td></tr>
+        <tr><th scope="row">ניקוי</th><td><span class="tick">✓</span>שטיפה בלחץ מים בלבד</td><td>ניקוי מורכב יותר</td></tr>
+        <tr><th scope="row">בטון חשוף</th><td><span class="tick">✓</span>משטח חלק ואחיד</td><td>תוצאה משתנה</td></tr>
+        <tr><th scope="row">עיבוד</th><td><span class="tick">✓</span>חיתוך, קידוח וצורות מעוגלות</td><td>מגבלות בעבודה</td></tr>
+        <tr><th scope="row">מזג אוויר</th><td><span class="tick">✓</span>אחסון בחוץ ללא כיסוי בניילון</td><td>נשחק מהר בשמש ובגשם</td></tr>
+        <tr><th scope="row">סביבה</th><td><span class="tick">✓</span>ניתן למחזור בסוף השימוש</td><td>כריתת עצים מתמשכת</td></tr>
       </tbody>
     </table>
   </div>
@@ -195,9 +196,9 @@ footer a{color:#fff}
       <h2>מה אפשר להזמין</h2>
     </div>
     <div class="cards">
-      <article class="card"><div class="ph"><img src="img/board-480.webp" srcset="img/board-480.webp 480w, img/board-960.webp 960w" sizes="(max-width:860px) 100vw, 360px" width="480" height="480" loading="lazy" alt="לוח טפסנות מפוליפרופילן"></div><div class="body"><h3>לוח טפסנות מפוליפרופילן</h3><p>מידות 1220×2440×18 מ"מ</p></div></article>
-      <article class="card"><div class="ph"><img src="img/strip-480.webp" srcset="img/strip-480.webp 480w, img/strip-960.webp 960w" sizes="(max-width:860px) 100vw, 360px" width="480" height="480" loading="lazy" alt="לוחות טפסנות מפוליפרופילן במבנה חלול"></div><div class="body"><h3>לוח טפסנות מפוליפרופילן</h3><p>מידות 300×50×18 מ"מ</p></div></article>
-      <article class="card"><div class="ph"><img src="img/steel-480.webp" srcset="img/steel-480.webp 480w, img/steel-960.webp 960w" sizes="(max-width:860px) 100vw, 360px" width="480" height="480" loading="lazy" alt="אביזרי מערכת טפסנות פלדה"></div><div class="body"><h3>מערכת טפסנות פלדה</h3><p>אביזרים ומערכת משלימה לעבודת הטפסנות</p></div></article>
+      <article class="card"><div class="ph"><img src="img/board-480.webp" srcset="img/board-480.webp 480w, img/board-960.webp 960w" sizes="(max-width:860px) 120px, 360px" width="480" height="480" loading="lazy" alt="לוח טפסנות מפוליפרופילן"></div><div class="body"><h3>לוח טפסנות מפוליפרופילן</h3><p>מידות 1220×2440×18 מ"מ</p></div></article>
+      <article class="card"><div class="ph"><img src="img/strip-480.webp" srcset="img/strip-480.webp 480w, img/strip-960.webp 960w" sizes="(max-width:860px) 120px, 360px" width="480" height="480" loading="lazy" alt="לוחות טפסנות מפוליפרופילן במבנה חלול"></div><div class="body"><h3>לוח טפסנות מפוליפרופילן</h3><p>מידות 300×50×18 מ"מ</p></div></article>
+      <article class="card"><div class="ph"><img src="img/steel-480.webp" srcset="img/steel-480.webp 480w, img/steel-960.webp 960w" sizes="(max-width:860px) 120px, 360px" width="480" height="480" loading="lazy" alt="אביזרי מערכת טפסנות פלדה"></div><div class="body"><h3>מערכת טפסנות פלדה</h3><p>אביזרים ומערכת משלימה לעבודת הטפסנות</p></div></article>
     </div>
   </div>
 </section>
